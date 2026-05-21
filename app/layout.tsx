@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "sonner";
+import { AssistantWidget } from "@/components/ai/AssistantWidget";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -105,14 +106,15 @@ const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Bandra Kurla Complex",
+    streetAddress: "Goregaon East, Mumbai",
     addressLocality: "Mumbai",
-    postalCode: "400051",
+    addressRegion: "Maharashtra",
+    postalCode: "400063",
     addressCountry: "IN",
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+91-98765-43210",
+    telephone: "+91-98928-70455",
     contactType: "customer service",
     email: "hello@flexichoice.in",
     availableLanguage: ["English", "Hindi"],
@@ -205,6 +207,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <AssistantWidget />
         <Toaster />
         {/* Replace G-XXXXXXXXXX with your real GA4 Measurement ID */}
         <GoogleAnalytics gaId="G-1RPYQPJMVK" />

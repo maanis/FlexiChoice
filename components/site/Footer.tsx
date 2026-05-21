@@ -43,9 +43,9 @@ export function Footer() {
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="h-4 w-4 shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-foreground transition-colors">+91 98765 43210</a>
+                <a href="tel:+919892870455" className="hover:text-foreground transition-colors">+91 98928 70455</a>
               </p>
-              <p className="text-xs leading-relaxed">Bandra Kurla Complex, Mumbai 400051</p>
+              <p className="text-xs leading-relaxed">Goregaon East, Mumbai 400063</p>
             </address>
           </div>
         </div>

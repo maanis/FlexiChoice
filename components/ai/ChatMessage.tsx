@@ -22,7 +22,7 @@ export function ChatMessage({ message }: { message: { role: string; content: str
       )}
     >
       {!isUser && (
-        <div className="relative flex h-8 w-8 shrink-0 select-none items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white text-blue-600 shadow-sm">
+        <div className="relative flex h-8 w-8 shrink-0 select-none items-center justify-center overflow-hidden rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-sm">
           <Image src="/FC-Logo.png" alt="Bot" fill className="object-cover" />
         </div>
       )}
@@ -31,7 +31,7 @@ export function ChatMessage({ message }: { message: { role: string; content: str
           'relative flex flex-col gap-2 rounded-2xl px-4 py-3 text-sm shadow-sm transition-all',
           isUser
             ? 'max-w-[70%] bg-blue-600 text-white rounded-tr-none'
-            : 'max-w-[85%] bg-white border border-gray-100 text-gray-800 rounded-tl-none'
+            : 'max-w-[85%] bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-tl-none'
         )}
       >
         <div className="prose prose-sm max-w-none break-words leading-relaxed dark:prose-invert">

@@ -131,9 +131,9 @@ export function AssistantChat() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-slate-50/50">
+    <div className="flex flex-col h-full bg-slate-50/50 dark:bg-gray-900">
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-3 md:p-4 scroll-smooth">
+      <div className="flex-1 overflow-y-auto p-3 md:p-4 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {messages.map((message) => (
           <motion.div
             key={message.id}
@@ -150,7 +150,7 @@ export function AssistantChat() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex items-center gap-2 text-sm text-gray-500 p-4"
+            className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 p-4"
           >
             <Loader2 className="h-4 w-4 animate-spin" />
             FlexiChoice AI is thinking...
@@ -169,7 +169,7 @@ export function AssistantChat() {
               <button
                 key={i}
                 onClick={() => handleSuggestionClick(q)}
-                className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs text-left text-gray-600 shadow-sm transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
+                className="rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-1.5 text-xs text-left text-gray-600 dark:text-gray-300 shadow-sm transition-all hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300"
               >
                 {q}
               </button>
@@ -181,7 +181,7 @@ export function AssistantChat() {
       </div>
 
       {/* Input Area */}
-      <div className="p-3 md:p-4 bg-white border-t border-gray-100 rounded-b-2xl">
+      <div className="p-3 md:p-4 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 rounded-b-2xl">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -190,7 +190,7 @@ export function AssistantChat() {
             setLocalInput('');
             if (inputRef.current) inputRef.current.style.height = 'auto';
           }}
-          className="relative flex items-end bg-white"
+          className="relative flex items-end bg-white dark:bg-gray-900"
         >
           <textarea
             ref={inputRef}
@@ -201,7 +201,7 @@ export function AssistantChat() {
             spellCheck={false}
             enterKeyHint="send"
             rows={1}
-            className="w-full resize-none rounded-2xl border border-gray-200 bg-gray-50 pl-4 pr-12 py-3 text-sm focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/10 transition-all placeholder:text-gray-400 no-scrollbar"
+            className="w-full resize-none rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 pl-4 pr-12 py-3 text-sm focus:border-blue-500 focus:bg-white dark:focus:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-blue-500/10 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 text-gray-900 dark:text-gray-100 no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             style={{ minHeight: '44px', maxHeight: '120px' }}
             value={localInput}
             onChange={(e) => {
@@ -228,13 +228,13 @@ export function AssistantChat() {
               "absolute right-1.5 bottom-1.5 flex h-9 w-9 items-center justify-center rounded-full transition-all",
               localInput.trim() && !isLoading
                 ? "bg-blue-600 text-white hover:bg-blue-700 hover:scale-105"
-                : "bg-gray-100 text-gray-400"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500"
             )}
           >
             <Send size={16} className={cn("transition-transform", localInput.trim() && !isLoading && "-translate-x-0.5 translate-y-0.5")} />
           </button>
         </form>
-        <div className="mt-2 text-center text-[10px] text-gray-400">
+        <div className="mt-2 text-center text-[10px] text-gray-400 dark:text-gray-500">
           Powered by FlexiChoice AI. May produce inaccurate info.
         </div>
       </div>

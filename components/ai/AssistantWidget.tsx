@@ -140,7 +140,7 @@ export function AssistantWidget() {
                   : {}
               }
               className={cn(
-                "fixed z-[9999] flex flex-col overflow-hidden bg-white shadow-2xl ring-1 ring-black/5",
+                "fixed z-[9999] flex flex-col overflow-hidden bg-white dark:bg-gray-900 shadow-2xl ring-1 ring-black/5 dark:ring-white/10",
                 isMobile
                   ? "inset-x-0 bottom-0 rounded-t-3xl"
                   : "bottom-6 right-6 h-[600px] w-[380px] rounded-2xl",
@@ -148,29 +148,29 @@ export function AssistantWidget() {
               )}
             >
               {/* Header */}
-              <div className="flex shrink-0 items-center justify-between border-b border-gray-100 bg-white px-5 py-4">
+              <div className="flex shrink-0 items-center justify-between border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 px-5 py-4">
                 <div className="flex items-center gap-3">
-                  <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50">
+                  <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-900/30">
                     <Image src="/FC-Logo.png" alt="FlexiChoice" fill className="object-cover rounded-xl" />
-                    <div className="absolute -bottom-1 -right-1 z-10 h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500 shadow-sm" />
+                    <div className="absolute -bottom-1 -right-1 z-10 h-3.5 w-3.5 rounded-full border-2 border-white dark:border-gray-900 bg-green-500 shadow-sm" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-gray-900">FlexiChoice AI</h3>
-                    <p className="text-xs text-green-600 font-medium">Online</p>
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">FlexiChoice AI</h3>
+                    <p className="text-xs text-green-600 dark:text-green-500 font-medium">Online</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   {!isMobile && (
                     <button
                       onClick={() => toggleOpen()}
-                      className="rounded-full p-1.5 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+                      className="rounded-full p-1.5 text-gray-400 dark:text-gray-500 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-600 dark:hover:text-gray-300"
                     >
                       <Minus size={18} />
                     </button>
                   )}
                   <button
                     onClick={() => toggleOpen()}
-                    className="rounded-full p-1.5 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+                    className="rounded-full p-1.5 text-gray-400 dark:text-gray-500 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-600 dark:hover:text-gray-300"
                   >
                     <X size={18} />
                   </button>

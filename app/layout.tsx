@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 import { AssistantWidget } from "@/components/ai/AssistantWidget";
 import "./globals.css";
@@ -211,6 +212,7 @@ export default function RootLayout({
         <Toaster />
         {/* Replace G-XXXXXXXXXX with your real GA4 Measurement ID */}
         <GoogleAnalytics gaId="G-1RPYQPJMVK" />
+        <Analytics />
       </body>
     </html>
   );

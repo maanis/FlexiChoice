@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { findFaqMatch, normalizeQuery, detectIntent } from '@/lib/ai/orchestrator';
 import { SYSTEM_PROMPT } from '@/lib/ai/faq-knowledge';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'AIzaSyDd4nKb2QQEaSqzc5ytJXfP1akAfJmd8_A');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 // Lightweight in-memory cache for prompt optimizations
 const MAX_CACHE_SIZE = 500;

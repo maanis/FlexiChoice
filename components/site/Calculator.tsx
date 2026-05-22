@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, animate } from "framer-motion";
 import { Calculator as CalcIcon, Activity, IndianRupee, PieChart, ShieldPlus, User, Users } from "lucide-react";
+import { useStore } from "@nanostores/react";
+import { activeTabStore } from "@/store/activeTab";
 import { MacWindow } from "./MacWindow";
 
 const formatIN = (num: number) => new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(Math.max(0, num));
@@ -42,6 +44,7 @@ function RangeInput({ label, value, min, max, step, suffix = "", prefix = "", on
 }
 
 export function Calculator() {
+  const globalTab = useStore(activeTabStore);
   const [activeTab, setActiveTab] = useState<"emi" | "eligibility" | "health">("emi");
   const [emiAmount, setEmiAmount] = useState(5000000);
   const [emiRate, setEmiRate] = useState(8.5);
@@ -53,6 +56,11 @@ export function Calculator() {
   const [age, setAge] = useState(30);
   const [coverage, setCoverage] = useState(10000000);
   const [familySize, setFamilySize] = useState<"self" | "couple" | "family">("family");
+
+  useEffect(() => {
+    if (globalTab === "loans" && activeTab === "health") setActiveTab("emi");
+    if (globalTab === "insurance" && activeTab !== "health") setActiveTab("health");
+  }, [globalTab, activeTab]);
 
   const calculateEMI = () => {
     const r = emiRate / 12 / 100;
@@ -103,7 +111,7 @@ export function Calculator() {
             </div>
             <h2 className="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-5xl md:text-6xl leading-[1.1]">
               Crunch the numbers. <br />
-              <span className="italic font-serif text-blue-600 dark:text-blue-500">Plan with precision.</span>
+              <span className={`italic font-serif ${globalTab === "loans" ? "text-blue-600 dark:text-blue-500" : "text-emerald-600 dark:text-emerald-500"}`}>Plan with precision.</span>
             </h2>
           </div>
         </div>
@@ -111,7 +119,9 @@ export function Calculator() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8 items-start">
           <div className="lg:col-span-7 xl:col-span-8">
             <div className="mb-12 flex space-x-1 rounded-2xl border border-zinc-200 bg-white p-1.5 shadow-sm dark:border-zinc-800/80 dark:bg-zinc-900/50">
-              {(["emi", "eligibility", "health"] as const).map((tab) => (
+              {(["emi", "eligibility", "health"] as const)
+                .filter(tab => globalTab === "loans" ? tab !== "health" : tab === "health")
+                .map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}

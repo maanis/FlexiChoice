@@ -11,6 +11,9 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { FAQ } from "@/components/site/FAQ";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { Footer } from "@/components/site/Footer";
+import { MarketingSlider } from "@/components/site/MarketingSlider";
+import { BottomNav } from "@/components/site/BottomNav";
+import { LiveRates } from "@/components/site/LiveRates";
 
 export const metadata: Metadata = {
   title: "FlexiChoice – Best Loans & Insurance Services in India",
@@ -27,6 +30,8 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <LiveRates />
+        {/* <MarketingSlider /> */}
         <LoanRates />
         <Services />
         <Process />
@@ -38,6 +43,7 @@ export default function Home() {
         <FinalCTA />
       </main>
       <Footer />
+      <BottomNav />
     </div>
   );
 }

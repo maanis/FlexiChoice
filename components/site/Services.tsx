@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useStore } from "@nanostores/react";
+import { activeTabStore, setActiveTab } from "@/store/activeTab";
 import {
   Home, Building2, Wallet, Briefcase, Coins, Landmark,
   HeartPulse, Heart, Stethoscope, Car, Plane, Globe2,
@@ -35,7 +36,7 @@ const insurance: Service[] = [
 ];
 
 export function Services() {
-  const [tab, setTab] = useState<"loans" | "insurance">("loans");
+  const tab = useStore(activeTabStore);
   const data = tab === "loans" ? loans : insurance;
 
   return (
@@ -58,78 +59,67 @@ export function Services() {
             <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight md:text-5xl leading-[1.1]">
               Every financial product,{" "}
               <br className="hidden md:block" />
-              <span className="italic font-serif text-blue-600 dark:text-blue-500">thoughtfully curated.</span>
+              <span className={`italic font-serif ${tab === "loans" ? "text-blue-600 dark:text-blue-500" : "text-emerald-600 dark:text-emerald-500"}`}>thoughtfully curated.</span>
             </h2>
           </div>
 
-          <div className="relative inline-flex rounded-full border border-border bg-surface/80 p-1.5 shadow-soft backdrop-blur shrink-0">
-            <span
-              className="absolute inset-y-1.5 w-[calc(50%-6px)] rounded-full bg-foreground transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] shadow-md"
-              style={{ left: tab === "loans" ? "6px" : "calc(50% + 0px)" }}
-            />
-            {(["loans", "insurance"] as const).map((t) => (
-              <button
-                key={t}
-                onClick={() => setTab(t)}
-                aria-pressed={tab === t}
-                className={`relative z-10 h-10 min-w-[130px] rounded-full px-5 text-[15px] font-semibold capitalize transition-colors duration-300 ${tab === t ? "text-background" : "text-muted-foreground hover:text-foreground"}`}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {data.map((s, i) => (
-            <motion.article
-              key={s.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-[2rem] border border-hairline bg-surface/60 p-7 transition-all duration-500 hover:-translate-y-2 hover:bg-surface hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] backdrop-blur"
-            >
-              <span
-                className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                style={{ background: "radial-gradient(600px circle at 50% 0%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 70%)" }}
-                aria-hidden
-              />
-              <span className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 scale-x-0 transition-all duration-700 group-hover:opacity-100 group-hover:scale-x-100" aria-hidden />
-              <s.icon className="absolute right-[-10%] top-[-10%] h-40 w-40 text-muted/10 transition-transform duration-700 group-hover:-rotate-12 group-hover:scale-110 pointer-events-none" aria-hidden />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={tab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {data.map((s, i) => (
+              <article
+                key={s.title}
+                className="group relative overflow-hidden rounded-[2rem] border border-hairline bg-surface/60 p-7 transition-all duration-500 hover:-translate-y-2 hover:bg-surface hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] backdrop-blur"
+              >
+                <span
+                  className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                  style={{ background: "radial-gradient(600px circle at 50% 0%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 70%)" }}
+                  aria-hidden
+                />
+                <span className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 scale-x-0 transition-all duration-700 group-hover:opacity-100 group-hover:scale-x-100" aria-hidden />
+                <s.icon className="absolute right-[-10%] top-[-10%] h-40 w-40 text-muted/10 transition-transform duration-700 group-hover:-rotate-12 group-hover:scale-110 pointer-events-none" aria-hidden />
 
-              <div className="relative flex items-start justify-between">
-                <span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-surface to-muted border border-border text-foreground transition-all duration-500 group-hover:bg-foreground group-hover:text-background group-hover:shadow-soft">
-                  <s.icon className="h-6 w-6" />
-                </span>
-                <span className="inline-flex items-center rounded-full border border-border bg-background/50 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-muted-foreground uppercase">
-                  {s.stat}
-                </span>
-              </div>
-
-              <h3 className="relative mt-6 text-[19px] font-bold tracking-tight text-foreground/90 group-hover:text-foreground transition-colors">{s.title}</h3>
-              <p className="relative mt-2 text-[15px] text-muted-foreground leading-relaxed">{s.desc}</p>
-
-              <ul className="relative mt-6 space-y-2.5">
-                {s.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-[13px] font-medium text-muted-foreground/90">
-                    <span className="mt-1.5 flex h-[5px] w-[5px] shrink-0 items-center justify-center rounded-full bg-secondary shadow-[0_0_8px_rgba(20,184,166,0.5)]" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="relative mt-8 pt-6 border-t border-hairline/60">
-                <a href="#quote" className="group/btn inline-flex items-center gap-2 text-[14px] font-semibold text-foreground transition-colors hover:text-secondary">
-                  Explore options
-                  <span className="grid h-6 w-6 place-items-center rounded-full bg-muted transition-all duration-300 group-hover/btn:bg-secondary group-hover/btn:text-secondary-foreground group-hover:-translate-y-0.5">
-                    <ChevronRight className="h-3 w-3" />
+                <div className="relative flex items-start justify-between">
+                  <span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-surface to-muted border border-border text-foreground transition-all duration-500 group-hover:bg-foreground group-hover:text-background group-hover:shadow-soft">
+                    <s.icon className="h-6 w-6" />
                   </span>
-                </a>
-              </div>
-            </motion.article>
-          ))}
-        </div>
+                  <span className="inline-flex items-center rounded-full border border-border bg-background/50 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-muted-foreground uppercase">
+                    {s.stat}
+                  </span>
+                </div>
+
+                <h3 className="relative mt-6 text-[19px] font-bold tracking-tight text-foreground/90 group-hover:text-foreground transition-colors">{s.title}</h3>
+                <p className="relative mt-2 text-[15px] text-muted-foreground leading-relaxed">{s.desc}</p>
+
+                <ul className="relative mt-6 space-y-2.5">
+                  {s.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5 text-[13px] font-medium text-muted-foreground/90">
+                      <span className="mt-1.5 flex h-[5px] w-[5px] shrink-0 items-center justify-center rounded-full bg-secondary shadow-[0_0_8px_rgba(20,184,166,0.5)]" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="relative mt-8 pt-6 border-t border-hairline/60">
+                  <a href="#quote" className="group/btn inline-flex items-center gap-2 text-[14px] font-semibold text-foreground transition-colors hover:text-secondary">
+                    Explore options
+                    <span className="grid h-6 w-6 place-items-center rounded-full bg-muted transition-all duration-300 group-hover/btn:bg-secondary group-hover/btn:text-secondary-foreground group-hover:-translate-y-0.5">
+                      <ChevronRight className="h-3 w-3" />
+                    </span>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

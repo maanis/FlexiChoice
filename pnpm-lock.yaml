@@ -16,7 +16,7 @@ importers:
         version: 0.24.1
       '@nanostores/react':
         specifier: ^0.8.4
-        version: 0.8.4(nanostores@0.11.4)(react@19.2.6)
+        version: 0.8.4(nanostores@1.3.0)(react@19.2.6)
       '@next/third-parties':
         specifier: ^15.3.2
         version: 15.5.18(next@15.5.18(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
@@ -41,6 +41,9 @@ importers:
       lucide-react:
         specifier: ^0.575.0
         version: 0.575.0(react@19.2.6)
+      nanostores:
+        specifier: ^1.3.0
+        version: 1.3.0
       next:
         specifier: ^15.3.2
         version: 15.5.18(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -1879,9 +1882,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanostores@0.11.4:
-    resolution: {integrity: sha512-k1oiVNN4hDK8NcNERSZLQiMfRzEGtfnvZvdBvey3SQbgn8Dcrk0h1I6vpxApjb10PFUflZrgJ2WEZyJQ+5v7YQ==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  nanostores@1.3.0:
+    resolution: {integrity: sha512-XPUa/jz+P1oJvN9VBxw4L9MtdFfaH3DAryqPssqhb2kXjmb9npz0dly6rCsgFWOPr4Yg9mTfM3MDZgZZ+7A3lA==}
+    engines: {node: ^20.0.0 || >=22.0.0}
 
   napi-postinstall@0.3.4:
     resolution: {integrity: sha512-PHI5f1O0EP5xJ9gQmFGMS6IZcrVvTjpXjz7Na41gTE7eE2hK11lg04CECCYEEjdc17EV4DO+fkGEtt7TpTaTiQ==}
@@ -2611,9 +2614,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@nanostores/react@0.8.4(nanostores@0.11.4)(react@19.2.6)':
+  '@nanostores/react@0.8.4(nanostores@1.3.0)(react@19.2.6)':
     dependencies:
-      nanostores: 0.11.4
+      nanostores: 1.3.0
       react: 19.2.6
 
   '@napi-rs/wasm-runtime@1.1.4(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
@@ -4395,7 +4398,7 @@ snapshots:
 
   nanoid@3.3.12: {}
 
-  nanostores@0.11.4: {}
+  nanostores@1.3.0: {}
 
   napi-postinstall@0.3.4: {}
 

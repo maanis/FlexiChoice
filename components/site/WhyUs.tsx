@@ -2,16 +2,27 @@
 
 import Image from "next/image";
 import { Zap, Building, Lock, Eye, ShieldCheck, Activity } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useStore } from "@nanostores/react";
+import { activeTabStore } from "@/store/activeTab";
 
-const features = [
+const loanFeatures = [
   { icon: Zap, title: "Fast Approval", desc: "Most loans sanctioned within 48 hours. We cut the red tape." },
-  { icon: Building, title: "30+ Partners", desc: "Top banks and insurers combined in one single platform." },
+  { icon: Building, title: "30+ Partners", desc: "Top banks combined in one single platform for best rates." },
   { icon: Lock, title: "Bank-Grade Security", desc: "End-to-end encryption to keep your financial data safe." },
   { icon: Eye, title: "100% Transparent", desc: "No hidden fees. Complete clarity from application to disbursal." },
 ];
 
+const insuranceFeatures = [
+  { icon: Zap, title: "Instant Issuance", desc: "Most policies issued instantly. We cut the red tape." },
+  { icon: Building, title: "Top Insurers", desc: "Leading insurance providers combined in one single platform." },
+  { icon: Lock, title: "Bank-Grade Security", desc: "End-to-end encryption to keep your medical and financial data safe." },
+  { icon: Eye, title: "100% Transparent", desc: "No hidden clauses. Complete clarity on what is covered." },
+];
+
 export function WhyUs() {
+  const activeTab = useStore(activeTabStore);
+  const features = activeTab === "loans" ? loanFeatures : insuranceFeatures;
   return (
     <section id="why" className="relative overflow-hidden py-24 md:py-32" aria-label="Why choose FlexiChoice">
       <div className="pointer-events-none absolute left-0 top-1/2 hidden h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-primary/5 blur-[120px] md:block" aria-hidden />
@@ -83,12 +94,12 @@ export function WhyUs() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-secondary shadow-soft backdrop-blur">
+              <div className={`inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] shadow-soft backdrop-blur ${activeTab === "loans" ? "text-blue-500" : "text-emerald-500"}`}>
                 Why Choose Us
               </div>
               <h2 className="mt-6 text-balance text-3xl font-semibold tracking-tight md:text-5xl leading-[1.1]">
                 Built on trust. <br />
-                <span className="italic font-serif text-blue-600 dark:text-blue-500">Powered by people.</span>
+                <span className={`italic font-serif ${activeTab === "loans" ? "text-blue-600 dark:text-blue-500" : "text-emerald-600 dark:text-emerald-500"}`}>Powered by people.</span>
               </h2>
               <p className="mt-4 max-w-lg text-[16px] leading-relaxed text-muted-foreground">
                 We combine cutting-edge fintech infrastructure with human expertise to make your financial decisions effortless and secure.
@@ -96,23 +107,25 @@ export function WhyUs() {
             </motion.div>
 
             <div className="mt-12 grid gap-4 sm:grid-cols-2">
-              {features.map((feature, idx) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
-                  className="group relative overflow-hidden rounded-[1.5rem] border border-hairline bg-surface/40 p-6 transition-all hover:bg-surface hover:shadow-soft backdrop-blur"
-                >
-                  <span className="absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-secondary/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-muted/50 border border-hairline text-foreground group-hover:bg-foreground group-hover:text-background transition-colors duration-300">
-                    <feature.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mb-2 text-[17px] font-semibold tracking-tight">{feature.title}</h3>
-                  <p className="text-[14px] leading-relaxed text-muted-foreground">{feature.desc}</p>
-                </motion.div>
-              ))}
+              <AnimatePresence mode="popLayout">
+                {features.map((feature, idx) => (
+                  <motion.div
+                    key={feature.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: 0.1 + idx * 0.1 }}
+                    className="group relative overflow-hidden rounded-[1.5rem] border border-hairline bg-surface/40 p-6 transition-all hover:bg-surface hover:shadow-soft backdrop-blur"
+                  >
+                    <span className={`absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${activeTab === "loans" ? "via-blue-500/50" : "via-emerald-500/50"}`} />
+                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-muted/50 border border-hairline text-foreground group-hover:bg-foreground group-hover:text-background transition-colors duration-300">
+                      <feature.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mb-2 text-[17px] font-semibold tracking-tight">{feature.title}</h3>
+                    <p className="text-[14px] leading-relaxed text-muted-foreground">{feature.desc}</p>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           </div>
         </div>

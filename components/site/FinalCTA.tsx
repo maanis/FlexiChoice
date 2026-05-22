@@ -1,6 +1,12 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
+import { useStore } from "@nanostores/react";
+import { activeTabStore } from "@/store/activeTab";
 
 export function FinalCTA() {
+  const activeTab = useStore(activeTabStore);
+  
   return (
     <section className="py-20 md:py-28" aria-label="Call to action">
       <div className="mx-auto max-w-5xl px-4">
@@ -12,8 +18,8 @@ export function FinalCTA() {
           />
           <div className="relative">
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-5xl leading-[1.1]">
-              Make your next financial decision <br className="hidden md:block" />
-              <span className="italic font-serif text-blue-600 dark:text-blue-500">the easiest one.</span>
+              Make your next {activeTab === "loans" ? "financial" : "protection"} decision <br className="hidden md:block" />
+              <span className={`italic font-serif ${activeTab === "loans" ? "text-blue-600 dark:text-blue-500" : "text-emerald-600 dark:text-emerald-500"}`}>the easiest one.</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-balance text-muted-foreground">
               Talk to an advisor today — free, no commitment, and tailored entirely to you.

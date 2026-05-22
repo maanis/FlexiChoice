@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useStore } from "@nanostores/react";
+import { activeTabStore } from "@/store/activeTab";
 import { BrandImage } from "./BrandImage";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -15,13 +18,13 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const activeTab = useStore(activeTabStore);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 8 && !scrolled) setScrolled(true);
+    else if (latest <= 8 && scrolled) setScrolled(false);
+  });
 
   return (
     <header
@@ -106,7 +109,7 @@ export function Navbar() {
           <a
             href="#quote"
             onClick={() => setOpen(false)}
-            className={`mt-4 rounded-full bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-500 transform-gpu hover:scale-105 active:scale-95 ${open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+            className={`mt-4 rounded-full px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-500 transform-gpu hover:scale-105 active:scale-95 ${activeTab === "loans" ? "bg-blue-600" : "bg-emerald-600"} ${open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
             style={{ transitionDelay: `${links.length * 50}ms` }}
           >
             Get a Free Quote

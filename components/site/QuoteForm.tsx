@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { Lock, Send } from "lucide-react";
+import { useStore } from "@nanostores/react";
+import { activeTabStore } from "@/store/activeTab";
 import { MacWindow } from "./MacWindow";
 import { toast } from "sonner";
 
@@ -9,8 +10,8 @@ const loanTypes = ["Home Loan", "Mortgage", "Personal", "Business", "Gold", "Pri
 const insuranceTypes = ["Life", "Term Life", "Health", "Vehicle", "Travel", "Overseas"];
 
 export function QuoteForm() {
-  const [tab, setTab] = useState<"loan" | "insurance">("loan");
-  const options = tab === "loan" ? loanTypes : insuranceTypes;
+  const activeTab = useStore(activeTabStore);
+  const options = activeTab === "loans" ? loanTypes : insuranceTypes;
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,10 +25,10 @@ export function QuoteForm() {
     <section id="quote" className="py-20 md:py-28" aria-label="Get a free quote">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-[1fr_1.1fr] lg:items-center">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wider text-secondary">Get Started</p>
+          <p className={`text-xs font-medium uppercase tracking-wider ${activeTab === "loans" ? "text-blue-500" : "text-emerald-500"}`}>Get Started</p>
           <h2 className="mt-2 text-balance text-3xl font-semibold tracking-tight md:text-4xl leading-[1.1]">
             Get a personalized quote <br className="hidden md:block" />
-            <span className="italic font-serif text-blue-600 dark:text-blue-500">in under a minute.</span>
+            <span className={`italic font-serif ${activeTab === "loans" ? "text-blue-600 dark:text-blue-500" : "text-emerald-600 dark:text-emerald-500"}`}>in under a minute.</span>
           </h2>
           <p className="mt-3 max-w-md text-muted-foreground">
             Tell us a little about what you need. A senior advisor will compare options across our partner network and reach out with the best fit.
@@ -40,25 +41,10 @@ export function QuoteForm() {
 
         <MacWindow title="get-quote.flexichoice.in">
           <div className="p-5 sm:p-7">
-            <div className="relative inline-flex rounded-full border border-border bg-muted p-1">
-              <span
-                className="absolute inset-y-1 w-[calc(50%-0.25rem)] rounded-full bg-surface shadow-soft transition-all duration-300 ease-out"
-                style={{ left: tab === "loan" ? "0.25rem" : "50%" }}
-              />
-              {(["loan", "insurance"] as const).map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setTab(t)}
-                  aria-pressed={tab === t}
-                  className={`relative z-10 h-9 min-w-[120px] rounded-full px-4 text-sm font-medium capitalize transition-colors ${tab === t ? "text-foreground" : "text-muted-foreground"}`}
-                >
-                  {t} Quote
-                </button>
-              ))}
+            <div className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground border-b border-hairline pb-4">
+              {activeTab === "loans" ? "Loan Application" : "Insurance Quote"}
             </div>
-
-            <form onSubmit={onSubmit} className="mt-6 grid gap-4 sm:grid-cols-2">
+            <form onSubmit={onSubmit} className="mt-2 grid gap-4 sm:grid-cols-2">
               <Field label="Full Name" name="name" placeholder="Aarav Mehta" required />
               <Field label="Phone Number" name="phone" type="tel" placeholder="+91 98765 43210" required pattern="[0-9+\s\-]{7,15}" />
               <Field label="City" name="city" placeholder="Mumbai" required />

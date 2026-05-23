@@ -82,7 +82,7 @@ export function AssistantWidget() {
           <div className="fixed z-[9999] pointer-events-none inset-0 flex items-end justify-between px-3 pb-6 md:px-6 md:pb-8 md:justify-end md:gap-4">
             {/* WhatsApp Button */}
             <motion.a
-              href="https://wa.me/919920870455"
+              href="https://wa.me/919892870455"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ scale: 0, opacity: 0 }}

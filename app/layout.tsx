@@ -6,34 +6,74 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://flexichoice.in"),
+
   title: {
-    default: "FlexiChoice – Best Loans & Insurance Services in India",
-    template: "%s | FlexiChoice",
+    default: "Flexi Choice - Choice is yours",
+    template: "%s | Flexi Choice",
   },
+
   description:
-    "FlexiChoice offers the best home loans, personal loans, business loans, and insurance services across India. Compare 30+ top banks and insurers. Expert advisors. Fast approvals in 48 hours.",
+    "Flexi Choice provides trusted loan and insurance services across Mumbai including Goregaon, Borivali, Kandivali, and Malad. Get home loans, personal loans, business loans, and insurance plans with expert advisors and fast approvals.",
+
   keywords: [
-    "best loan services India",
+    "Flexi Choice",
+
+    "best loan services",
+    "best loan services in Mumbai",
+    "best loan services in Goregaon",
+    "best loan services in Borivali",
+    "best loan services in Kandivali",
+    "best loan services in Malad",
+
+    "insurance services",
+    "insurance services near me",
+    "insurance services in Goregaon",
+    "insurance services in Borivali",
+    "insurance services in Kandivali",
+    "insurance services in Malad",
+
     "home loan",
     "personal loan",
     "business loan",
-    "insurance services",
-    "term life insurance",
-    "health insurance",
-    "loan advisor India",
-    "FlexiChoice",
-    "loan comparison India",
-    "best insurance plans",
     "mortgage loan",
     "gold loan",
-    "lowest interest rate loan",
+
+    "health insurance",
+    "term insurance",
+    "vehicle insurance",
+    "travel insurance",
+
+    "loan advisor Mumbai",
+    "loan consultant Goregaon",
+    "loan consultant Borivali",
+    "loan consultant Kandivali",
+    "loan consultant Malad",
+
+    "best insurance advisor Mumbai",
+    "best financial services Mumbai",
+
+    "low interest home loan",
+    "fast loan approval",
+    "loan services near Goregaon",
+
+    "Flexi Choice loans",
+    "Flexi Choice insurance",
   ],
-  authors: [{ name: "FlexiChoice", url: "https://flexichoice.in" }],
-  creator: "FlexiChoice",
-  publisher: "FlexiChoice",
+
+  authors: [
+    {
+      name: "Flexi Choice",
+      url: "https://flexichoice.in",
+    },
+  ],
+
+  creator: "Flexi Choice",
+  publisher: "Flexi Choice",
+
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -42,83 +82,125 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: "https://flexichoice.in",
-    siteName: "FlexiChoice",
-    title: "FlexiChoice – Best Loans & Insurance Services in India",
+
+    siteName: "Flexi Choice",
+
+    title: "Flexi Choice - Choice is yours",
+
     description:
-      "Compare home loans, personal loans, business loans, and insurance plans from 30+ top Indian banks and insurers. Free advisory. Fast approvals.",
+      "Trusted loan and insurance services across Mumbai including Goregaon, Borivali, Kandivali, and Malad.",
+
     images: [
       {
         url: "/FC-Logo.png",
         width: 1200,
         height: 630,
-        alt: "FlexiChoice – Loans & Insurance Services India",
+        alt: "Flexi Choice - Loans & Insurance Services",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "FlexiChoice – Best Loans & Insurance Services in India",
+
+    title: "Flexi Choice - Choice is yours",
+
     description:
-      "Compare loans and insurance from 30+ top Indian banks. Free expert advisory. Fast approvals.",
+      "Trusted loan and insurance services across Mumbai.",
+
     images: ["/FC-Logo.png"],
+
     site: "@flexichoice",
   },
+
   alternates: {
     canonical: "https://flexichoice.in",
   },
+
   icons: {
     icon: [{ url: "/FC-Logo.png", type: "image/png" }],
     shortcut: "/FC-Logo.png",
     apple: "/FC-Logo.png",
   },
+
   verification: {
-    // Add your Google Search Console verification code here after verifying
-    // google: "your-verification-code",
+    // google: "your-google-verification-code",
   },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
+
   "@type": "FinancialService",
-  name: "FlexiChoice",
+
+  name: "Flexi Choice",
+
   url: "https://flexichoice.in",
+
   logo: "https://flexichoice.in/FC-Logo.png",
+
   description:
-    "FlexiChoice is India's trusted loan and insurance advisory platform. We help you compare and secure the best home loans, personal loans, business loans, and insurance plans from 30+ top banks and insurers.",
+    "Flexi Choice is a trusted loan and insurance advisory platform serving customers across Mumbai.",
+
+  slogan: "Choice is yours",
+
   serviceType: [
     "Home Loan",
     "Personal Loan",
     "Business Loan",
     "Mortgage Loan",
     "Gold Loan",
-    "Term Life Insurance",
     "Health Insurance",
+    "Term Insurance",
     "Vehicle Insurance",
     "Travel Insurance",
   ],
-  areaServed: {
-    "@type": "Country",
-    name: "India",
-  },
+
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Mumbai",
+    },
+    {
+      "@type": "City",
+      name: "Goregaon",
+    },
+    {
+      "@type": "City",
+      name: "Borivali",
+    },
+    {
+      "@type": "City",
+      name: "Kandivali",
+    },
+    {
+      "@type": "City",
+      name: "Malad",
+    },
+  ],
+
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Goregaon East, Mumbai",
+    streetAddress: "Goregaon East",
     addressLocality: "Mumbai",
     addressRegion: "Maharashtra",
     postalCode: "400063",
     addressCountry: "IN",
   },
+
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+91-98928-70455",
+    telephone: "+91-9892870455",
     contactType: "customer service",
     email: "hello@flexichoice.in",
     availableLanguage: ["English", "Hindi"],
   },
+
   sameAs: [
     "https://www.facebook.com/flexichoice",
     "https://www.instagram.com/flexichoice",
@@ -128,46 +210,55 @@ const organizationSchema = {
 
 const faqSchema = {
   "@context": "https://schema.org",
+
   "@type": "FAQPage",
+
   mainEntity: [
     {
       "@type": "Question",
-      name: "Does FlexiChoice charge for advisory?",
+
+      name: "Does Flexi Choice charge for advisory?",
+
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Our consultation is completely free. We earn a referral fee from partner banks and insurers — never from you.",
+
+        text: "No. Our consultation is completely free for customers.",
       },
     },
+
     {
       "@type": "Question",
-      name: "How long does loan approval usually take?",
+
+      name: "How long does loan approval take?",
+
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Most personal and home loans are sanctioned within 48 hours once documents are submitted. Business loans typically take 5–7 days.",
+
+        text: "Most loans are processed within 48 hours after document submission.",
       },
     },
+
     {
       "@type": "Question",
-      name: "Are my documents and data safe with FlexiChoice?",
+
+      name: "Can I compare multiple loan options?",
+
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. All data is encrypted in transit and at rest. We only share what's necessary with partners you choose to apply with.",
+
+        text: "Yes. Flexi Choice helps you compare multiple banks and insurance providers before making a decision.",
       },
     },
+
     {
       "@type": "Question",
-      name: "Can I compare multiple loan and insurance plans before deciding?",
+
+      name: "Which areas does Flexi Choice serve?",
+
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Absolutely. Your advisor presents 3–5 best-fit options side-by-side, with transparent fees and terms.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Which cities does FlexiChoice operate in?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We serve customers across all major Indian cities, with on-ground advisors in Mumbai, Delhi, Bengaluru, Pune and Hyderabad.",
+
+        text: "We provide loan and insurance services across Mumbai including Goregaon, Borivali, Kandivali, Malad, Andheri, and nearby areas.",
       },
     },
   ],
@@ -182,34 +273,46 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" type="image/png" href="/FC-Logo.png" />
+
         <link rel="shortcut icon" href="/FC-Logo.png" />
+
         <link rel="apple-touch-icon" href="/FC-Logo.png" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
         />
+
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
         />
       </head>
+
       <body>
         {children}
+
         <AssistantWidget />
+
         <Toaster />
-        {/* Replace G-XXXXXXXXXX with your real GA4 Measurement ID */}
+
         <GoogleAnalytics gaId="G-1RPYQPJMVK" />
       </body>
     </html>

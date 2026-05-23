@@ -198,14 +198,14 @@ export function Hero() {
                 <h1 className="text-[3.5rem] font-black leading-[0.9] tracking-tighter text-zinc-900 dark:text-white md:text-[5rem] lg:text-[5.1rem]">
                   {activeTab === "loans" ? (
                     <>
-                      Flexi Choice — <br />
+                      Flexi Choice <br />
                       <span className="bg-gradient-to-r from-blue-600 font-serif to-cyan-500 bg-clip-text text-transparent">
                         choice is yours.
                       </span>
                     </>
                   ) : (
                     <>
-                      Secure your — <br />
+                      Secure your <br />
                       <span className="bg-gradient-to-r from-emerald-500 font-serif to-teal-400 bg-clip-text text-transparent">
                         future today.
                       </span>

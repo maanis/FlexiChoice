@@ -13,12 +13,34 @@ export function QuoteForm() {
   const activeTab = useStore(activeTabStore);
   const options = activeTab === "loans" ? loanTypes : insuranceTypes;
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Quote request received", {
-      description: "An advisor will reach out within 24 hours.",
-    });
-    (e.target as HTMLFormElement).reset();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+    
+    data._subject = activeTab === "loans" ? "New Loan Quote Request" : "New Insurance Quote Request";
+    data.quote_type = activeTab === "loans" ? "Loan Request" : "Insurance Request";
+    data._captcha = "false";
+
+    try {
+      await fetch("https://formsubmit.co/ajax/flexichoicein@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      toast.success("Quote request received", {
+        description: "An advisor will reach out within 24 hours.",
+      });
+      (e.target as HTMLFormElement).reset();
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to send request", {
+        description: "Please try again later.",
+      });
+    }
   };
 
   return (

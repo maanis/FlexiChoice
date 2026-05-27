@@ -9,25 +9,105 @@ import { cn } from "@/lib/utils";
 
 // --- Dummy Data ---
 const bankRates = [
-    { name: "HDFC Bank", min: "7.15%", max: "9.50%" },
-    { name: "State Bank of India", min: "8.40%", max: "10.05%" },
-    { name: "ICICI Bank", min: "8.45%", max: "9.90%" },
-    { name: "Axis Bank", min: "8.45%", max: "10.25%" },
-    { name: "Kotak Mahindra", min: "8.50%", max: "10.50%" },
-    { name: "Bank of Baroda", min: "8.40%", max: "10.10%" },
-    { name: "Punjab National", min: "8.45%", max: "10.25%" },
-    { name: "Federal Bank", min: "8.50%", max: "9.85%" },
+    {
+        name: "HDFC Bank",
+        min: "7.15%",
+        max: "9.50%",
+        logo: "https://img.logo.dev/hdfcbank.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "State Bank of India",
+        min: "7.10%",
+        max: "9.05%",
+        logo: "https://img.logo.dev/sbi.co.in?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "ICICI Bank",
+        min: "7.45%",
+        max: "9.90%",
+        logo: "https://img.logo.dev/icicibank.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Axis Bank",
+        min: "7.40%",
+        max: "10.25%",
+        logo: "https://img.logo.dev/axisbank.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Kotak Mahindra",
+        min: "7.50%",
+        max: "10.50%",
+        logo: "https://img.logo.dev/kotak.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Bank of Baroda",
+        min: "7.15%",
+        max: "10.10%",
+        logo: "https://img.logo.dev/bankofbaroda.in?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Punjab National",
+        min: "7.45%",
+        max: "10.25%",
+        logo: "https://img.logo.dev/pnbindia.in?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Federal Bank",
+        min: "7.40%",
+        max: "9.85%",
+        logo: "https://img.logo.dev/federalbank.co.in?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
 ];
 
 const insuranceRates = [
-    { name: "Star Health", min: "₹450/m", max: "₹1,200/m" },
-    { name: "HDFC Ergo", min: "₹480/m", max: "₹1,500/m" },
-    { name: "ICICI Lombard", min: "₹500/m", max: "₹1,800/m" },
-    { name: "Care Health", min: "₹420/m", max: "₹1,100/m" },
-    { name: "Niva Bupa", min: "₹490/m", max: "₹1,400/m" },
-    { name: "SBI General", min: "₹460/m", max: "₹1,300/m" },
-    { name: "Aditya Birla", min: "₹440/m", max: "₹1,250/m" },
-    { name: "Bajaj Allianz", min: "₹470/m", max: "₹1,450/m" },
+    {
+        name: "Star Health",
+        min: "₹450/m",
+        max: "₹1,200/m",
+        logo: "https://img.logo.dev/starhealth.in?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "HDFC Ergo",
+        min: "₹480/m",
+        max: "₹1,500/m",
+        logo: "https://img.logo.dev/hdfcergo.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "ICICI Lombard",
+        min: "₹500/m",
+        max: "₹1,800/m",
+        logo: "https://img.logo.dev/icicilombard.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Care Health",
+        min: "₹420/m",
+        max: "₹1,100/m",
+        logo: "https://img.logo.dev/careinsurance.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Niva Bupa",
+        min: "₹490/m",
+        max: "₹1,400/m",
+        logo: "https://img.logo.dev/nivabupa.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "SBI General",
+        min: "₹460/m",
+        max: "₹1,300/m",
+        logo: "https://img.logo.dev/sbigeneral.in?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Aditya Birla",
+        min: "₹440/m",
+        max: "₹1,250/m",
+        logo: "https://img.logo.dev/adityabirlacapital.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
+    {
+        name: "Bajaj Allianz",
+        min: "₹470/m",
+        max: "₹1,450/m",
+        logo: "https://img.logo.dev/bajajallianz.com?token=pk_W6M_580yTvSiyUYhFUAVfA&size=64",
+    },
 ];
 
 // --- Sub-component for the Marquee Row ---
@@ -68,12 +148,16 @@ function ProviderCard({ item, isLoans, className }: { item: any, isLoans: boolea
         )}>
             <div className="mb-6 flex items-center gap-3">
                 <div className={cn(
-                    "grid h-10 w-10 shrink-0 place-items-center rounded-full border transition-colors",
+                    "grid h-10 w-10 shrink-0 place-items-center rounded-full border bg-white transition-colors overflow-hidden",
                     isLoans
-                        ? "border-blue-100 bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-400 dark:group-hover:bg-blue-500"
-                        : "border-emerald-100 bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400 dark:group-hover:bg-emerald-500"
+                        ? "border-blue-100 group-hover:border-blue-300 dark:border-blue-900/50 dark:bg-zinc-900"
+                        : "border-emerald-100 group-hover:border-emerald-300 dark:border-emerald-900/50 dark:bg-zinc-900"
                 )}>
-                    {isLoans ? <Landmark className="h-5 w-5" /> : <Shield className="h-5 w-5" />}
+                    {item.logo ? (
+                        <img src={item.logo} alt={`${item.name} logo`} className="h-full w-full object-contain p-1.5" />
+                    ) : (
+                        isLoans ? <Landmark className="h-5 w-5 text-blue-600 dark:text-blue-400" /> : <Shield className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                    )}
                 </div>
                 <h4 className="text-base font-bold text-zinc-900 dark:text-white truncate">
                     {item.name}

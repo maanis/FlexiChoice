@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "sonner";
 import { AssistantWidget } from "@/components/ai/AssistantWidget";
+import { LeadPopup } from "@/components/site/LeadPopup";
+import { SocialProof } from "@/components/site/SocialProof";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -208,6 +210,8 @@ export default function RootLayout({
       <body>
         {children}
         <AssistantWidget />
+        <LeadPopup />
+        <SocialProof />
         <Toaster />
         {/* Replace G-XXXXXXXXXX with your real GA4 Measurement ID */}
         <GoogleAnalytics gaId="G-1RPYQPJMVK" />

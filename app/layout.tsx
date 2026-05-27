@@ -116,7 +116,7 @@ const organizationSchema = {
     "@type": "ContactPoint",
     telephone: "+91-98928-70455",
     contactType: "customer service",
-    email: "hello@flexichoice.in",
+    email: "flexichoice.in@gmail.com",
     availableLanguage: ["English", "Hindi"],
   },
   sameAs: [

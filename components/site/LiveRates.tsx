@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 // --- Dummy Data ---
 const bankRates = [
-    { name: "HDFC Bank", min: "8.35%", max: "9.50%" },
+    { name: "HDFC Bank", min: "7.15%", max: "9.50%" },
     { name: "State Bank of India", min: "8.40%", max: "10.05%" },
     { name: "ICICI Bank", min: "8.45%", max: "9.90%" },
     { name: "Axis Bank", min: "8.45%", max: "10.25%" },
@@ -133,7 +133,7 @@ export function LiveRates() {
                 const maxNum = parseFloat(item.max.replace(/[^\d.]/g, ''));
 
                 if (isLoans) {
-                    // For loans (e.g., 8.35%), find rates within a 0.5% delta
+                    // For loans (e.g., 7.15%), find rates within a 0.5% delta
                     if (Math.abs(minNum - numQuery) <= 0.5 || Math.abs(maxNum - numQuery) <= 0.5) return true;
                     if (numQuery >= minNum && numQuery <= maxNum) return true;
                 } else {
@@ -198,7 +198,7 @@ export function LiveRates() {
                             "bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-700",
                             isLoans ? "from-blue-600 to-cyan-500" : "from-emerald-500 to-teal-400"
                         )}>
-                            {isLoans ? "8.35%*" : "₹450/mo*"}
+                            {isLoans ? "7.15%*" : "₹450/mo*"}
                         </span>
                     </motion.h2>
 

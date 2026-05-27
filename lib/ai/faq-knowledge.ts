@@ -29,7 +29,7 @@ export const FAQ_KNOWLEDGE = [
   },
   {
     keywords: ["contact", "support", "help", "customer care", "email", "phone"],
-    response: "You can reach us anytime at **+91-98928-70455** or email us at **hello@flexichoice.in**. We're here to help!"
+    response: "You can reach us anytime at **+91-98928-70455** or email us at **flexichoice.in@gmail.com**. We're here to help!"
   },
   {
     keywords: ["owner", "founder", "raj mishra", "who owns", "who founded"],
@@ -59,7 +59,7 @@ BUSINESS CONTEXT:
 - Advisory is 100% FREE for users.
 - Fast approvals (48 hours for most loans, 5-7 days for business loans).
 - On-ground advisors in Mumbai, Delhi, Bengaluru, Pune, and Hyderabad, but serving all major Indian cities.
-- Contact: +91-98928-70455, hello@flexichoice.in
+- Contact: +91-98928-70455, flexichoice.in@gmail.com
 
 TONE & STYLE:
 - Professional, premium, confident, yet highly conversational and friendly.

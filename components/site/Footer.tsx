@@ -39,7 +39,7 @@ export function Footer() {
             <address className="mt-4 space-y-3 text-sm text-muted-foreground not-italic">
               <p className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0" />
-                <a href="mailto:hello@flexichoice.in" className="hover:text-foreground transition-colors">hello@flexichoice.in</a>
+                <a href="mailto:flexichoice.in@gmail.com" className="hover:text-foreground transition-colors">flexichoice.in@gmail.com</a>
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="h-4 w-4 shrink-0" />

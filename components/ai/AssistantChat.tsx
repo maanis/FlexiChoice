@@ -35,6 +35,7 @@ export function AssistantChat() {
     return [...SUGGESTED_QUESTIONS]
       .sort(() => 0.5 - Math.random())
       .slice(0, 4);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages.length]);
 
   // Smooth auto-scroll

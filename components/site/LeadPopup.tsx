@@ -185,7 +185,7 @@ export function LeadPopup() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    You're All Set!
+                    You&apos;re All Set!
                   </h3>
                   <p className="mt-3 text-sm font-medium leading-relaxed text-gray-500 dark:text-gray-400">
                     Thank you for choosing FlexiChoice.<br />

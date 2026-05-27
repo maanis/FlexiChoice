@@ -14,7 +14,8 @@ import {
   Activity,
   HeartPulse,
   Users,
-  ShieldPlus
+  ShieldPlus,
+  Home
 } from "lucide-react";
 import { motion, animate, AnimatePresence } from "framer-motion";
 import { MacWindow } from "./MacWindow";
@@ -411,15 +412,15 @@ export function Hero() {
                   "grid h-12 w-12 shrink-0 place-items-center rounded-2xl border",
                   activeTab === "loans" ? "border-cyan-500/20 bg-cyan-50 text-cyan-600 dark:bg-cyan-500/10 dark:text-cyan-400" : "border-rose-500/20 bg-rose-50 text-rose-600 dark:bg-rose-500/10 dark:text-rose-400"
                 )}>
-                  {activeTab === "loans" ? <ShieldCheck className="h-6 w-6" /> : <HeartPulse className="h-6 w-6" />}
+                  {activeTab === "loans" ? <Home className="h-6 w-6" /> : <HeartPulse className="h-6 w-6" />}
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="text-[14px] font-bold text-zinc-900 dark:text-white">
-                    {activeTab === "loans" ? "Term Life Cover" : "Critical Illness"}
+                    {activeTab === "loans" ? "Home Loan Sanctioned" : "Critical Illness"}
                   </p>
                   <p className="mt-0.5 text-[11px] font-medium text-zinc-500 whitespace-nowrap" key={`float1-${calcKey}`}>
                     {activeTab === "loans" ? (
-                      <><AnimatedNumber value={20000000} formatter={formatCompact} /> · Active</>
+                      <><AnimatedNumber value={20000000} formatter={formatCompact} /> · Disbursed</>
                     ) : (
                       <><AnimatedNumber value={metrics.criticalIllness} formatter={formatCompact} /> · Rider</>
                     )}
@@ -435,7 +436,7 @@ export function Hero() {
                       />
                     </div>
                     <span className={cn("ml-3 text-[10px] font-bold uppercase tracking-wider", activeTab === "loans" ? "text-cyan-500" : "text-rose-500")}>
-                      Secured
+                      {activeTab === "loans" ? "Approved" : "Secured"}
                     </span>
                   </div>
                 </div>
